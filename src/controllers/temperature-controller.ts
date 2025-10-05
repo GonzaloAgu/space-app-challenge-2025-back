@@ -36,7 +36,7 @@ export default async function temperatureController(req: Request, res: Response)
 
     const value = higherThan ? Number(higherThan) : Number(lowerThan)
 
-    const eventProbability = getTempProbability(tempData, daysDifference, value, higherThan ? 'higherThan' : 'lowerThan');
+    const eventProbability = getTempProbability(tempData, daysDifference + 1, value, higherThan ? 'higherThan' : 'lowerThan');
 
     return res.json({ p: eventProbability })
 }

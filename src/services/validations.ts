@@ -22,6 +22,13 @@ function basicValidations(req: Request): ValidationResponse {
     const lat = Number(latitude);
     const lon = Number(longitude);
 
+    if (start > end) {
+        return {
+            isValid: false,
+            error: "La fecha de inicio debe ser igual o anterior a la fecha de fin"
+        }
+    }
+
     if (!/^\d{8}$/.test(start) || !/^\d{8}$/.test(end)) {
         return {
             isValid: false,
